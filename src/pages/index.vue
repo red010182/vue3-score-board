@@ -4,16 +4,7 @@ import seed from '~/lib/SeedData'
 
 const items = ref<Item[]>(seed)
 const sortedItems = computed(() => [...items.value].sort((a, b) => b.score - a.score))
-function getRank(item: Item) {
-  const [first, second, third, ..._] = [...new Set(sortedItems.value.map(i => i.score))]
-  if (item.score === first)
-    return 1
-  if (item.score === second)
-    return 2
-  if (item.score === third)
-    return 3
-  return 999
-}
+const getRank = (item: Item) => [...new Set(sortedItems.value.map(i => i.score))].findIndex(score => score === item.score) + 1
 const showRank = (item: Item) => getRank(item) < 4 && item.score > 0
 const isTop1 = (item: Item) => getRank(item) === 1 && item.score > 0
 </script>
