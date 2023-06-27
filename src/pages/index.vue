@@ -20,7 +20,7 @@ const isTop1 = (item: Item) => getRank(item) === 1
 
 <template lang="pug">
 .flex.justify-center.bg-color
-  .w-200
+  .w-200.noselect
     .flex.text-3xl.justify-center.my-2.font-bold SCOREBOARD
     div(v-for='item in items')
       .flex.border-b-1px.score-board-bg.text-white
@@ -29,9 +29,9 @@ const isTop1 = (item: Item) => getRank(item) === 1
           span.ml-2(v-if='showRank(item) & item.score > 0') （第 {{ getRank(item) }} 名）
           .i-icon-park-twotone-crown-three.text-yellow(v-if='isTop1(item) & item.score > 0')
         .flex.text-3xl
-          .button.noselect.p-4.bg-red(@click='item.score--') -
+          .button.p-4.bg-red(@click='item.score--') -
           .flex.w-16.justify-center.items-center {{  item.score }}
-          .button.noselect.p-4.bg-green(@click='item.score++') +
+          .button.p-4.bg-green(@click='item.score++') +
 </template>
 
 <style lang="scss">
