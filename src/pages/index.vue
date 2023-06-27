@@ -5,23 +5,32 @@ import seed from '~/lib/SeedData'
 const items = ref<Item[]>(seed)
 const sortedItems = computed(() => [...items.value].sort((a, b) => b.score - a.score))
 function getRank(item: Item) {
-  const i = sortedItems.value.findIndex(i => i === item)
-  if (i > 0 && sortedItems.value[i].score === sortedItems.value[i - 1].score)
-    return i - 1
-  return i
+  const [first, second, third, ..._] = [...new Set(sortedItems.value.map(i => i.score))]
+  if (item.score === first)
+    return 1
+  if (item.score === second)
+    return 2
+  if (item.score === third)
+    return 3
+  return 999
 }
-const showRank = (item: Item) => sortedItems.value.findIndex(i => i === item) < 3
+const showRank = (item: Item) => getRank(item) < 4
+const isTop1 = (item: Item) => getRank(item) === 1
 </script>
 
 <template lang="pug">
 .flex.justify-center.bg-color
   div.w-200
     .flex.text-3xl.justify-center.my-2.font-bold SCOREBOARD
+
     div(v-for='item in items')
       .flex.border-b-1px.score-board-bg.text-white
         .flex.flex-grow.items-center.pl-4.text-2xl
           span {{ item.name }}
-          span.ml-2(v-if='showRank(item) & item.score > 0') （第 {{ getRank(item) + 1 }} 名）
+          span.ml-2(v-if='showRank(item) & item.score > 0') （第 {{ getRank(item) }} 名）
+          span(v-if='isTop1(item) & item.score > 0')
+            .i-icon-park-twotone-crown-three.text-yellow
+
         .flex.text-3xl
           .button.p-4.bg-red(@click='item.score--') -
           .flex.w-16.justify-center.items-center {{  item.score }}

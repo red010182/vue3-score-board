@@ -3,9 +3,11 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.39.5
   '@iconify-json/carbon': ^1.1.17
+  '@iconify-json/icon-park-twotone': ^1.1.9
   '@types/node': ^20.2.5
   '@unocss/eslint-config': ^0.53.0
   '@unocss/extractor-pug': ^0.53.4
+  '@unocss/preset-icons': ^0.53.4
   '@unocss/reset': ^0.53.0
   '@vitejs/plugin-vue': ^4.2.3
   '@vue-macros/volar': ^0.10.2
@@ -41,9 +43,11 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.39.5_7yfldhli4vs6yywnkyiujhawka
   '@iconify-json/carbon': 1.1.18
+  '@iconify-json/icon-park-twotone': 1.1.9
   '@types/node': 20.3.2
   '@unocss/eslint-config': 0.53.4_7yfldhli4vs6yywnkyiujhawka
   '@unocss/extractor-pug': 0.53.4_pug@3.0.2
+  '@unocss/preset-icons': 0.53.4
   '@unocss/reset': 0.53.4
   '@vitejs/plugin-vue': 4.2.3_vite@4.3.9+vue@3.3.4
   '@vue-macros/volar': 0.10.2_vue-tsc@1.8.2+vue@3.3.4
@@ -484,6 +488,12 @@ packages:
 
   /@iconify-json/carbon/1.1.18:
     resolution: {integrity: sha512-RbKET6KS9xUMeYVq1FUH3UUA7AYNcnApkHt2AccCwTWTQQs/O58ji4Of6z6PhRajGlbfvrJzT/Uqh19OKECRvA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/icon-park-twotone/1.1.9:
+    resolution: {integrity: sha512-ZvnXzGybY1hAgHVxenPaM2MzK/7Y5tJp7y7m8lGaLb+e3I8JzvPktVmYAQqsO3OQ1pXdk0iHXpI8WzEyaeMLAQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
