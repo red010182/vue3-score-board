@@ -14,8 +14,8 @@ function getRank(item: Item) {
     return 3
   return 999
 }
-const showRank = (item: Item) => getRank(item) < 4
-const isTop1 = (item: Item) => getRank(item) === 1
+const showRank = (item: Item) => getRank(item) < 4 && item.score > 0
+const isTop1 = (item: Item) => getRank(item) === 1 && item.score > 0
 </script>
 
 <template lang="pug">
@@ -26,8 +26,8 @@ const isTop1 = (item: Item) => getRank(item) === 1
       .flex.border-b-1px.score-board-bg.text-white
         .flex.flex-grow.items-center.pl-4.text-2xl
           span {{ item.name }}
-          span.ml-2(v-if='showRank(item) & item.score > 0') （第 {{ getRank(item) }} 名）
-          .i-icon-park-twotone-crown-three.text-yellow(v-if='isTop1(item) & item.score > 0')
+          span.ml-2(v-if='showRank(item)') （第 {{ getRank(item) }} 名）
+          .i-icon-park-twotone-crown-three.text-yellow(v-if='isTop1(item)')
         .flex.text-3xl
           .button.p-4.bg-red(@click='item.score--') -
           .flex.w-16.justify-center.items-center {{  item.score }}
